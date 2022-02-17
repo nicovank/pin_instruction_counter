@@ -10,7 +10,7 @@ TOOL_NAME = instruction_counter
 
 $(OBJDIR)$(TOOL_NAME)$(OBJ_SUFFIX): src/$(TOOL_NAME).cpp
 	mkdir -p $(OBJDIR)
-	$(CXX) $(TOOL_CXXFLAGS) -Iinclude $(COMP_OBJ) $@ $<
+	$(CXX) $(TOOL_CXXFLAGS) $(COMP_OBJ)$@ $^
 
 $(OBJDIR)$(TOOL_NAME)$(PINTOOL_SUFFIX): $(OBJDIR)$(TOOL_NAME)$(OBJ_SUFFIX)
-	$(LINKER) $(TOOL_LDFLAGS) -Iinclude $(LINK_EXE) $@ $< $(TOOL_LPATHS) $(TOOL_LIBS)
+	$(LINKER) $(TOOL_LDFLAGS) $(LINK_EXE)$@ $^ $(TOOL_LPATHS) $(TOOL_LIBS)
